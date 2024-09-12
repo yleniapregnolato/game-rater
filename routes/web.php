@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::middleware('auth')
     ->name('admin.') //inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        //utilizza slug come parametro al posto dell'id
+        Route::resource('reviews', ReviewController::class)->parameters(['reviews'=>'reviews:slug']);
     });
 
 require __DIR__. '/auth.php';
