@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ReviewController extends Controller
 {
@@ -20,6 +21,7 @@ class ReviewController extends Controller
         $data = $request->all();
         $review = new Review();
         $review->fill($data);
+        $review->slug = Str::slug($request->title);
         $review->save();
 
     }
