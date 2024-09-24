@@ -70,6 +70,15 @@
                                     <i class="fa-solid fa-gamepad"></i> Reviews
                                 </a>
                             </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.reviews.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.reviews.create') }}">
+                                    <i class="fa-solid fa-plus"></i> Inserisci recensione
+                                </a>
+                            </li>
+                            
                         </ul>
 
 

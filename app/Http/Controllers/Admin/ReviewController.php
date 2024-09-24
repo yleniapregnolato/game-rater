@@ -10,4 +10,9 @@ class ReviewController extends Controller
     public function index() {
         return view('admin.reviews.index');
     }
+
+    public function create() {
+        return view("admin.reviews.create");
+    }
+
 }
