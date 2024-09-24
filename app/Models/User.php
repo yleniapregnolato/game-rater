@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // relazione tabella riview
+    public function review() {
+        return $this->hasMany(Review::class);
+    }
 }

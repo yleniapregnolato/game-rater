@@ -9,6 +9,8 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'name', 'description', 'console'];
-
+    // relazione tabella reviw
+    public function review() {
+        return $this->hasMany(Review::class);
+    }
 }
