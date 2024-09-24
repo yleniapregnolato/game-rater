@@ -17,7 +17,7 @@ class GamesTableSeeder extends Seeder
             [
                 'name' => 'The Legend of Zelda: Breath of the Wild',
                 'description' => 'Open-world action-adventure game where Link explores the kingdom of Hyrule.',
-                'image' => 'https://example.com/zelda_breath_of_the_wild_cover.jpg',
+                'image' => 'https://www.nintendo.com/eu/media/images/10_share_images/games_15/wiiu_14/SI_WiiU_TheLegendOfZeldaBreathOfTheWild.jpg',
                 'console' => 'Nintendo Switch',
                 'created_at' => now(),
                 'updated_at' => now(),
