@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Game;
 
 class ReviewController extends Controller
 {
@@ -14,7 +15,8 @@ class ReviewController extends Controller
     }
 
     public function create() {
-        return view("admin.reviews.create");
+        $games = Game::all();
+        return view('admin.reviews.create', compact('games'));
     }
 
     public function store(Request $request) {
