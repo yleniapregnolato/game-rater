@@ -26,6 +26,12 @@ class ReviewController extends Controller
         $review->slug = Str::slug($request->title);
         $review->save();
 
+        return redirect()->route('admin.reviews.index');
+
+    }
+
+    public function show(Review $review) {
+        return view('admin.reviews.show', compact('review'));
     }
 
 }
