@@ -9,7 +9,7 @@
         {{-- form inserimento nuova recensione --}}
         <div class="mb-3 mt-3">
             <label for="review-title" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="review-title" placeholder="titolo">
+            <input type="text" class="form-control" id="review-title" placeholder="titolo" name="title" required>
         </div>
         <div class="mb-3">
             <label for="game-select" class="form-label">Seleziona il gioco da recensire</label>
@@ -21,8 +21,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Recensione:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="text-area" class="form-label">Recensione:</label>
+            <textarea class="form-control" id="text-area" rows="3" required></textarea>
         </div>
         {{-- /form inserimento nuova recensione --}}
 
