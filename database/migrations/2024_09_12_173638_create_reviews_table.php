@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->default('Default Title');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Colonna chiave esterna per 'user_id'
             $table->foreignId('game_id')->constrained()->onDelete('cascade'); // Colonna chiave esterna per 'game_id'
             $table->integer('rating'); // Colonna per il punteggio della recensione
