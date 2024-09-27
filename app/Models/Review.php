@@ -9,7 +9,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title, slug, user_id', 'game_id', 'rating', 'review'];
+    protected $fillable = ['title','slug', 'user_id', 'game_id', 'rating', 'review'];
 
     // relazione tabella game
     public function game() {
