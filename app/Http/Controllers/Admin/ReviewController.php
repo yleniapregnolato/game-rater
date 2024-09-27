@@ -10,28 +10,33 @@ use App\Models\Game;
 
 class ReviewController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('admin.reviews.index');
     }
 
-    public function create() {
+    public function create()
+    {
         $games = Game::all();
         return view('admin.reviews.create', compact('games'));
     }
 
-    public function store(Request $request) {
-        $data = $request->all();
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255', 'min:5', 'unique:reviews'],
+            'review' => ['nullable', 'min:10', 'max:5000'],
+        ]);
+
         $review = new Review();
-        $review->fill($data);
-        $review->slug = Str::slug($request->title);
+        $review->fill($validatedData);
+        $review->slug = Str::slug($validatedData['title']);
         $review->save();
-
-        return redirect()->route('admin.reviews.index');
-
+        return redirect()->route('admin.reviews.index')->with('success', 'Recensione salvata con successo!');
     }
 
-    public function show(Review $review) {
+    public function show(Review $review)
+    {
         return view('admin.reviews.show', compact('review'));
     }
-
 }
