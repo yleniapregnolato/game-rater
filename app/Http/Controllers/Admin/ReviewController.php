@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Game;
 
 class ReviewController extends Controller
 {
     public function index()
     {
-        return view('admin.reviews.index');
+        $reviews = Review::where('user_id', Auth::id())->get();
+        return view('admin.reviews.index', compact('reviews'));
+
     }
 
     public function create()
