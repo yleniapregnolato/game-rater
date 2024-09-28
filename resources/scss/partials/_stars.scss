@@ -1,0 +1,13 @@
+.stars {
+    display: flex;
+    cursor: pointer; 
+}
+
+.star {
+    font-size: 30px;
+    color: grey;
+}
+
+.star.selected {
+    color: gold;
+}
