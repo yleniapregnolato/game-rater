@@ -25,13 +25,26 @@ class ReviewController extends Controller
     {
         $validatedData = $request->validate([
             'title' => ['required', 'max:255', 'min:5', 'unique:reviews'],
-            'review' => ['nullable', 'min:10', 'max:5000'],
+            'rating' => ['required', 'integer', 'min:1', 'max:5'],
+            'review' => ['required', 'min:10', 'max:5000'],
+            'game_id' => ['required', 'exists:games,id'],
         ]);
 
         $review = new Review();
         $review->fill($validatedData);
-        $review->slug = Str::slug($validatedData['title']);
+
+        // Genera uno slug unico
+        $slug = Str::slug($validatedData['title']);
+        $count = Review::where('slug', 'LIKE', "{$slug}%")->count();
+        if ($count > 0) {
+            $slug = "{$slug}-{$count}";
+        }
+        $review->slug = $slug;
+
+        $review->user_id = auth()->id();
+
         $review->save();
+
         return redirect()->route('admin.reviews.index')->with('success', 'Recensione salvata con successo!');
     }
 
