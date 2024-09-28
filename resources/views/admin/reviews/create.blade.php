@@ -20,9 +20,24 @@
                 @endforeach
             </select>
         </div>
+
+        <div>
+            <div>
+                <label>Voto:</label>
+                <div class="stars" id="rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <input type="hidden" name="rating" id="ratingValue" required> <!-- Campo nascosto per il valore -->
+            </div>
+        </div>
+
         <div class="mb-3">
-            <label for="text-area" class="form-label">Recensione:</label>
-            <textarea class="form-control" id="text-area" rows="3" required></textarea>
+            <label for="review" class="form-label">Recensione:</label>
+            <textarea class="form-control" name="review" id="review" rows="3" required></textarea>
         </div>
         {{-- /form inserimento nuova recensione --}}
 
@@ -31,3 +46,27 @@
         {{-- /salvataggio recensione --}}
     </form>
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('ratingValue');
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+
+                // Rimuovi la classe 'selected' da tutte le stelle
+                stars.forEach(s => s.classList.remove('selected'));
+
+                // Aggiungi la classe 'selected' fino alla stella cliccata
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('selected');
+                }
+
+                // Imposta il valore nel campo nascosto
+                ratingValue.value = value;
+            });
+        });
+    });
+</script>
