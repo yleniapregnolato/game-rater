@@ -33,7 +33,7 @@ class GamesTableSeeder extends Seeder
             [
                 'name' => 'Halo Infinite',
                 'description' => 'First-person shooter that follows the story of Master Chief in the Halo universe.',
-                'image' => 'https://example.com/halo_infinite_cover.jpg',
+                'image' => 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1708091/capsule_616x353.jpg?t=1706638660',
                 'console' => 'Xbox One, Xbox Series X|S, PC',
                 'created_at' => now(),
                 'updated_at' => now(),
